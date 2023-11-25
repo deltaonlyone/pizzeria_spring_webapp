@@ -1,7 +1,7 @@
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/knights_database?useSSL=false&serverTimezone=UTC
+        url: jdbc:mysql://localhost:3306/PizzaDeliveryDB?useSSL=false&serverTimezone=UTC
         username: root
         password: root
     jpa:
@@ -9,7 +9,3 @@ spring:
             hibernate.dialect: org.hibernate.dialect.MySQLDialect
             hibernate.enable_lazy_load_no_trans: true
 
-    mvc:
-        view:
-            prefix: /view/
-            suffix: .jsp
