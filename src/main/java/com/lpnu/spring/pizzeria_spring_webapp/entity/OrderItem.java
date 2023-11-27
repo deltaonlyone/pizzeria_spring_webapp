@@ -9,7 +9,7 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderItemID")
-    private Long orderItemId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "OrderID")
@@ -29,19 +29,19 @@ public class OrderItem {
     }
 
     public OrderItem(Long orderItemId, Order order, Pizza pizza, int quantity, int unitPrice) {
-        this.orderItemId = orderItemId;
+        this.id = orderItemId;
         this.order = order;
         this.pizza = pizza;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
     }
 
-    public Long getOrderItemId() {
-        return orderItemId;
+    public Long getId() {
+        return id;
     }
 
-    public void setOrderItemId(Long orderItemId) {
-        this.orderItemId = orderItemId;
+    public void setId(Long orderItemId) {
+        this.id = orderItemId;
     }
 
     public Order getOrder() {
@@ -79,7 +79,7 @@ public class OrderItem {
     @Override
     public String toString() {
         return "OrderItem{" +
-                "orderItemId=" + orderItemId +
+                "orderItemId=" + id +
                 ", order=" + order +
                 ", pizza=" + pizza +
                 ", quantity=" + quantity +

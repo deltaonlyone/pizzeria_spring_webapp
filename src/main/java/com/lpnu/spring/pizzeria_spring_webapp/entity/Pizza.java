@@ -10,7 +10,7 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PizzaID")
-    private Long pizzaId;
+    private Long id;
 
     @Column(name = "Name")
     private String name;
@@ -22,25 +22,25 @@ public class Pizza {
     private double price;
 
     @ManyToMany
-    @JoinTable(name = "PizzaIngredients", joinColumns = @JoinColumn(name = "PizzaID"), inverseJoinColumns = @JoinColumn(name = "IngredientID"))
-    private List<Ingredient> ingredientList;
+    @JoinTable(name = "pizza_ingredients", joinColumns = @JoinColumn(name = "PizzaID"), inverseJoinColumns = @JoinColumn(name = "IngredientID"))
+    private List<Ingredient> ingredients;
 
     public Pizza() {
     }
 
     public Pizza(Long pizzaId, String name, String description, int price) {
-        this.pizzaId = pizzaId;
+        this.id = pizzaId;
         this.name = name;
         this.description = description;
         this.price = price;
     }
 
-    public Long getPizzaId() {
-        return pizzaId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPizzaId(Long pizzaId) {
-        this.pizzaId = pizzaId;
+    public void setId(Long pizzaId) {
+        this.id = pizzaId;
     }
 
     public String getName() {
@@ -67,18 +67,18 @@ public class Pizza {
         this.price = price;
     }
 
-    public List<Ingredient> getIngredientList() {
-        return ingredientList;
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setIngredientList(List<Ingredient> ingredientList) {
-        this.ingredientList = ingredientList;
+    public void setIngredients(List<Ingredient> ingredientList) {
+        this.ingredients = ingredientList;
     }
 
     @Override
     public String toString() {
         return "Pizza{" +
-                "pizzaId=" + pizzaId +
+                "pizzaId=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

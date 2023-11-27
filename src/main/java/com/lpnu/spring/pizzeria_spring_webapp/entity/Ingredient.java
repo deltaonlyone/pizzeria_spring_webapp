@@ -9,7 +9,7 @@ public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IngredientID")
-    private Long ingredientId;
+    private Long id;
 
     @Column(name = "Name")
     private String name;
@@ -17,21 +17,24 @@ public class Ingredient {
     @Column(name = "Description")
     private String description;
 
+    @Column(name = "Price")
+    private double price;
+
     public Ingredient() {
     }
 
     public Ingredient(Long ingredientId, String name, String description) {
-        this.ingredientId = ingredientId;
+        this.id = ingredientId;
         this.name = name;
         this.description = description;
     }
 
-    public Long getIngredientId() {
-        return ingredientId;
+    public Long getId() {
+        return id;
     }
 
-    public void setIngredientId(Long ingredientId) {
-        this.ingredientId = ingredientId;
+    public void setId(Long ingredientId) {
+        this.id = ingredientId;
     }
 
     public String getName() {
@@ -50,10 +53,18 @@ public class Ingredient {
         this.description = description;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Ingredient{" +
-                "ingredientId=" + ingredientId +
+                "ingredientId=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';

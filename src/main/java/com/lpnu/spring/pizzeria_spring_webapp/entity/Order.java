@@ -11,7 +11,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderID")
-    private Long orderId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "UserID")
@@ -30,19 +30,19 @@ public class Order {
     }
 
     public Order(Long orderId, User user, String status, BigDecimal totalAmount, Date dateTime) {
-        this.orderId = orderId;
+        this.id = orderId;
         this.user = user;
         this.status = status;
         this.totalAmount = totalAmount;
         this.dateTime = dateTime;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Long getId() {
+        return id;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setId(Long orderId) {
+        this.id = orderId;
     }
 
     public User getUser() {
@@ -80,7 +80,7 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "orderId=" + orderId +
+                "orderId=" + id +
                 ", user=" + user +
                 ", status='" + status + '\'' +
                 ", totalAmount=" + totalAmount +
