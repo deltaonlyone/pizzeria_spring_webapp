@@ -1,36 +1,36 @@
 package com.lpnu.spring.pizzeria_spring_webapp.entity;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "OrderID")
+    @Column(name = "orderID")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "username")
     private User user;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     private String status;
 
-    @Column(name = "TotalAmount")
-    private BigDecimal totalAmount;
+    @Column(name = "total_amount")
+    private double totalAmount;
 
-    @Column(name = "DateTime")
+    @Column(name = "date_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
 
     public Order() {
     }
 
-    public Order(Long orderId, User user, String status, BigDecimal totalAmount, Date dateTime) {
-        this.id = orderId;
+    public Order(Long id,User user, String status, double totalAmount, Date dateTime) {
+        this.id = id;
         this.user = user;
         this.status = status;
         this.totalAmount = totalAmount;
@@ -61,11 +61,11 @@ public class Order {
         this.status = status;
     }
 
-    public BigDecimal getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 

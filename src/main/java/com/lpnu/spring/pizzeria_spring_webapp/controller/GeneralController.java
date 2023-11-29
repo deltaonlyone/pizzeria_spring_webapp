@@ -27,10 +27,6 @@ public class GeneralController {
     private PizzaService pizzaService;
     @Autowired
     private UserService userService;
-    @Autowired
-    private OrderService orderService;
-    @Autowired
-    private IngredientService ingredientService;
 
     @GetMapping("/")
     public String getAllPizzas(Model model, HttpSession session) {
@@ -51,46 +47,5 @@ public class GeneralController {
         return "view_all_users";
     }
 
-    @GetMapping("/orders")
-    public String getAllOrders(Model model) {
-        List<Order> allOrders = orderService.getAllOrders();
-        model.addAttribute("allOrders", allOrders);
-        return "view_all_orders";
-    }
-
-    @GetMapping("/ingredients")
-    public String getAllIngredients(Model model) {
-        List<Ingredient> allIngredients = ingredientService.getAllIngredients();
-        model.addAttribute("allIngredients", allIngredients);
-        return "view_all_ingredients";
-    }
-
-    @GetMapping("/pizzas/ingredients")
-    public String getPizzaIngredients(@RequestParam("pizzaId") Long id, Model model) {
-        Pizza pizza = pizzaService.getPizzaById(id);
-        List<Ingredient> pizzaIngredients = pizza.getIngredients();
-
-        model.addAttribute("pizzaId", pizza.getId());
-        model.addAttribute("pizzaIngredients", pizzaIngredients);
-
-        // add to cart
-        model.addAttribute("cartItem", new AddCartItemDTO());
-
-        return "view_pizza_ingredients";
-    }
-
-    @PostMapping("/pizzas/ingredients/remove")
-    public String removePizzaIngredient(@RequestParam("pizzaId") Long pizzaId, @ModelAttribute("cartItem") AddCartItemDTO addCartItem, Model model) {
-        List<Ingredient> pizzaIngredients = ingredientService.getAllIngredientsById(addCartItem.getIngredients()
-                .stream().map(Id::getId).collect(Collectors.toList()));
-
-        model.addAttribute("pizzaId", pizzaId);
-        model.addAttribute("pizzaIngredients", pizzaIngredients);
-
-        // add to cart
-        model.addAttribute("cartItem", new AddCartItemDTO());
-
-        return "view_pizza_ingredients";
-    }
 
 }

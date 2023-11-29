@@ -2,11 +2,11 @@ package com.lpnu.spring.pizzeria_spring_webapp.dto;
 
 import com.lpnu.spring.pizzeria_spring_webapp.model.Id;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AddCartItemDTO {
+public class ModifyCartItemDTO {
     private Long pizzaId;
-    private List<Id> additionalIngredients;
     private List<Id> ingredients;
 
     public Long getPizzaId() {
@@ -17,15 +17,10 @@ public class AddCartItemDTO {
         this.pizzaId = pizzaId;
     }
 
-    public List<Id> getAdditionalIngredients() {
-        return additionalIngredients;
-    }
-
-    public void setAdditionalIngredients(List<Id> additionalIngredients) {
-        this.additionalIngredients = additionalIngredients;
-    }
-
     public List<Id> getIngredients() {
+        if (ingredients == null) {
+            ingredients = new ArrayList<>();
+        }
         return ingredients;
     }
 

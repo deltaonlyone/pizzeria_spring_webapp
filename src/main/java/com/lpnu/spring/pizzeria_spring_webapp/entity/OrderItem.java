@@ -3,33 +3,33 @@ package com.lpnu.spring.pizzeria_spring_webapp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "OrderItems")
+@Table(name = "orderitems")
 public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "OrderItemID")
+    @Column(name = "orderItemID")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "OrderID")
+    @JoinColumn(name = "orderID")
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "PizzaID")
+    @JoinColumn(name = "pizzaID")
     private Pizza pizza;
 
-    @Column(name = "Quantity")
+    @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "UnitPrice")
+    @Column(name = "unit_price")
     private double unitPrice;
 
     public OrderItem() {
     }
 
-    public OrderItem(Long orderItemId, Order order, Pizza pizza, int quantity, int unitPrice) {
-        this.id = orderItemId;
+    public OrderItem(Long id, Order order, Pizza pizza, int quantity, double unitPrice) {
+        this.id = id;
         this.order = order;
         this.pizza = pizza;
         this.quantity = quantity;
@@ -72,21 +72,8 @@ public class OrderItem {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
-
-    @Override
-    public String toString() {
-        return "OrderItem{" +
-                "orderItemId=" + id +
-                ", order=" + order +
-                ", pizza=" + pizza +
-                ", quantity=" + quantity +
-                ", unitPrice=" + unitPrice +
-                '}';
-    }
-
-
 
 }

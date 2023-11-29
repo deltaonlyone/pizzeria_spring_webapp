@@ -9,7 +9,7 @@
 <body>
 <h1>All Pizzas</h1>
 <c:if test="${not empty allPizzas}">
-    <table>
+    <table border="1">
         <thead>
         <tr>
             <th>Назва</th>
@@ -18,7 +18,6 @@
         </tr>
         </thead>
         <tbody>
-        <input type="button" value="Cart" onclick="window.location.href='/cart'">
         <c:forEach items="${allPizzas}" var="pizza">
             <c:url var="viewIngredients" value="/pizzas/ingredients">
                 <c:param name="pizzaId" value="${pizza.id}"/>
@@ -44,7 +43,9 @@
         </tbody>
     </table>
 </c:if>
-<br>
+<div>
+    <input type="button" value="Cart" onclick="window.location.href='${pageContext.request.contextPath}/cart'">
+</div>
 
 </body>
 </html>

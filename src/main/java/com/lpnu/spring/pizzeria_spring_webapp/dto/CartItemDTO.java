@@ -7,7 +7,6 @@ import java.util.List;
 
 public class CartItemDTO {
     private Pizza pizza;
-    private List<Ingredient> additionalIngredients;
     private List<Ingredient> ingredients;
     private int quantity;
     private double price;
@@ -19,7 +18,6 @@ public class CartItemDTO {
         this.additionalIngredients = additionalIngredients;
         this.price = price;
     }
-
     public Pizza getPizza() {
         return pizza;
     }

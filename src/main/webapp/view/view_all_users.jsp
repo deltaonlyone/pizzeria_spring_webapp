@@ -8,7 +8,7 @@
 <body>
 <h1>All Users</h1>
 <c:if test="${not empty allUsers}">
-    <table>
+    <table border="1">
         <thead>
         <tr>
             <th>Ім'я</th>

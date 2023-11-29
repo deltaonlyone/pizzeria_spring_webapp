@@ -4,21 +4,21 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Pizzas")
+@Table(name = "pizzas")
 public class Pizza {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PizzaID")
+    @Column(name = "pizzaID")
     private Long id;
 
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "Price")
+    @Column(name = "price")
     private double price;
 
     @ManyToMany
@@ -75,15 +75,6 @@ public class Pizza {
         this.ingredients = ingredientList;
     }
 
-    @Override
-    public String toString() {
-        return "Pizza{" +
-                "pizzaId=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
-    }
 
 
 }

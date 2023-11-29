@@ -10,10 +10,7 @@ import com.lpnu.spring.pizzeria_spring_webapp.service.IngredientService;
 import com.lpnu.spring.pizzeria_spring_webapp.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -38,7 +35,7 @@ public class CartController {
         double price = pizza.getPrice();
 
         List<Ingredient> ingredients = null;
-        if(addCartItem.getIngredients() != null){
+        if (addCartItem.getIngredients() != null) {
             ingredients = ingredientService.getAllIngredientsById(addCartItem.getIngredients()
                     .stream().map(Id::getId).collect(Collectors.toList()));
         }
@@ -63,5 +60,4 @@ public class CartController {
 
         return "redirect:/";
     }
-
 }

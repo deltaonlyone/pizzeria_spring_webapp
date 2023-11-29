@@ -1,23 +1,24 @@
 package com.lpnu.spring.pizzeria_spring_webapp.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Table(name = "Ingredients")
+@Table(name = "ingredients")
 public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IngredientID")
+    @Column(name = "ingredientID")
     private Long id;
 
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "Price")
+    @Column(name = "price")
     private double price;
 
     public Ingredient() {

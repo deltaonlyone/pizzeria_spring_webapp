@@ -20,17 +20,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Long userId) {
-        return userRepository.getReferenceById(userId);
-    }
-
-    @Override
     public void saveUser(User user) {
         userRepository.save(user);
     }
 
     @Override
-    public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
+    public void deleteUser(String username) {
+        userRepository.deleteById(username);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepository.getReferenceById(username);
     }
 }
