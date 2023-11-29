@@ -4,7 +4,6 @@ import com.lpnu.spring.pizzeria_spring_webapp.dto.CartDTO;
 import com.lpnu.spring.pizzeria_spring_webapp.dto.CartItemDTO;
 import com.lpnu.spring.pizzeria_spring_webapp.entity.Order;
 import com.lpnu.spring.pizzeria_spring_webapp.entity.OrderItem;
-import com.lpnu.spring.pizzeria_spring_webapp.entity.User;
 import com.lpnu.spring.pizzeria_spring_webapp.service.OrderItemService;
 import com.lpnu.spring.pizzeria_spring_webapp.service.OrderService;
 import com.lpnu.spring.pizzeria_spring_webapp.service.UserService;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

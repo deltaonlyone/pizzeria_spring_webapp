@@ -77,14 +77,4 @@ public class Order {
         this.dateTime = dateTime;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId=" + id +
-                ", user=" + user +
-                ", status='" + status + '\'' +
-                ", totalAmount=" + totalAmount +
-                ", dateTime=" + dateTime +
-                '}';
-    }
 }

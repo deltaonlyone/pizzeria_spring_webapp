@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -24,12 +23,10 @@ public class GeneralController {
     private UserService userService;
 
     @GetMapping("/")
-    public String getAllPizzas(Model model, HttpSession session) {
-        // pizzas
+    public String getAllPizzas(Model model) {
         List<Pizza> allPizzas = pizzaService.getAllPizzas();
         model.addAttribute("allPizzas", allPizzas);
 
-        // add to cart
         model.addAttribute("cartItem", new ModifyCartItemDTO());
 
         return "view_all_pizzas";
