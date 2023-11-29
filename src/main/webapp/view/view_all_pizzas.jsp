@@ -19,21 +19,19 @@
         </thead>
         <tbody>
         <c:forEach items="${allPizzas}" var="pizza">
-            <c:url var="viewIngredients" value="/pizzas/ingredients">
-                <c:param name="pizzaId" value="${pizza.id}"/>
-            </c:url>
             <tr>
                 <td>${pizza.name}</td>
                 <td>${pizza.description}</td>
                 <td>${pizza.price}</td>
                 <td>
-                    <input type="button" value="Show ingredients" onclick="window.location.href='${viewIngredients}'">
+                    <input type="button" value="View ingredients"
+                           onclick="window.location.href='${pageContext.request.contextPath}/pizzas/${pizza.id}'">
                 </td>
                 <td>
                     <form:form action="${pageContext.request.contextPath}/cart" modelAttribute="cartItem" method="post">
                         <form:hidden path="pizzaId" value="${pizza.id}"/>
                         <c:forEach var="ingredient" items="${pizza.ingredients}" varStatus="status">
-                            <form:hidden path="ingredients[${status.index}].id" value="${ingredient.id}" />
+                            <form:hidden path="ingredients[${status.index}].id" value="${ingredient.id}"/>
                         </c:forEach>
                         <input type="submit" value="Add to cart">
                     </form:form>

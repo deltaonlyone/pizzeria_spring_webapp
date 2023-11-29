@@ -1,6 +1,6 @@
 package com.lpnu.spring.pizzeria_spring_webapp.controller;
 
-import com.lpnu.spring.pizzeria_spring_webapp.dto.AddCartItemDTO;
+import com.lpnu.spring.pizzeria_spring_webapp.dto.ModifyCartItemDTO;
 import com.lpnu.spring.pizzeria_spring_webapp.dto.CartDTO;
 import com.lpnu.spring.pizzeria_spring_webapp.dto.CartItemDTO;
 import com.lpnu.spring.pizzeria_spring_webapp.entity.Ingredient;
@@ -30,7 +30,7 @@ public class CartController {
     }
 
     @PostMapping
-    public String addToCart(@ModelAttribute("cartItem") AddCartItemDTO addCartItem, HttpSession session) {
+    public String addToCart(@ModelAttribute("cartItem") ModifyCartItemDTO addCartItem, HttpSession session) {
         Pizza pizza = pizzaService.getPizzaById(addCartItem.getPizzaId());
         double price = pizza.getPrice();
 
@@ -38,13 +38,8 @@ public class CartController {
         if (addCartItem.getIngredients() != null) {
             ingredients = ingredientService.getAllIngredientsById(addCartItem.getIngredients()
                     .stream().map(Id::getId).collect(Collectors.toList()));
-        }
 
-        List<Ingredient> additionalIngredients = null;
-        if (addCartItem.getAdditionalIngredients() != null) {
-            additionalIngredients = ingredientService.getAllIngredientsById(addCartItem.getAdditionalIngredients()
-                    .stream().map(Id::getId).collect(Collectors.toList()));
-            double additionalPrice = additionalIngredients.stream()
+            double additionalPrice = ingredients.stream().filter(ingredient -> !pizza.getIngredients().contains(ingredient))
                     .map(Ingredient::getPrice)
                     .reduce(Double::sum).orElse(0.0);
             price += additionalPrice;
@@ -55,7 +50,7 @@ public class CartController {
             cart = new CartDTO();
         }
 
-        cart.addItem(new CartItemDTO(pizza, ingredients, additionalIngredients, price));
+        cart.addItem(new CartItemDTO(pizza, ingredients, price));
         session.setAttribute("cart", cart);
 
         return "redirect:/";

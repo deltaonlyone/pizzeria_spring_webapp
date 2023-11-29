@@ -24,8 +24,8 @@
             <tr>
                 <td>${cartItem.pizza.name}</td>
                 <td>
-                    <c:forEach var="ingredient" items="${cartItem.ingredients}">
-                        <span>${ingredient.name},&nbsp;</span>
+                    <c:forEach var="ingredient" items="${cartItem.ingredients}" varStatus="status">
+                        <span>${ingredient.name}<c:if test="${not status.last}">,&nbsp;</c:if></span>
                     </c:forEach>
                 </td>
                 <td><fmt:formatNumber type="number" maxFractionDigits="2" value="${cartItem.price}"/></td>

@@ -14,10 +14,11 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import javax.sql.DataSource;
 
+@EnableWebMvc
 @Configuration
 public class MVCConfig {
     @Bean
-    public ViewResolver viewResolver(){
+    public ViewResolver viewResolver() {
         InternalResourceViewResolver internalResourceViewResolver =
                 new InternalResourceViewResolver();
         internalResourceViewResolver.setPrefix("/view/");
