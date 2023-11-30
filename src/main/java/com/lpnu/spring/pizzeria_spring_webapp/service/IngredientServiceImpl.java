@@ -3,6 +3,7 @@ package com.lpnu.spring.pizzeria_spring_webapp.service;
 import com.lpnu.spring.pizzeria_spring_webapp.dao.IngredientRepository;
 import com.lpnu.spring.pizzeria_spring_webapp.entity.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +17,9 @@ public class IngredientServiceImpl implements IngredientService {
     private IngredientRepository ingredientRepository;
 
     @Override
+    @Cacheable("allIngredients")
     public List<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();
-
     }
 
     @Override

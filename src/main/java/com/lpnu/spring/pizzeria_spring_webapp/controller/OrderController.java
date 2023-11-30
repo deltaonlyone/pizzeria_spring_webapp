@@ -54,7 +54,7 @@ public class OrderController {
             orderItemService.saveOrderItem(orderItem);
         }
         httpSession.setAttribute("cart", null);
-        return "redirect:/";
+        return "success_page";
     }
 
     @GetMapping

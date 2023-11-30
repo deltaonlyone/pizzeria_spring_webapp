@@ -11,19 +11,15 @@
     <table border="1">
         <thead>
         <tr>
-            <th>Ім'я</th>
-            <th>Прізвище</th>
-            <th>Пошта</th>
-            <th>Адреса</th>
+            <th>Назва</th>
+            <th>Пароль</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${allUsers}" var="user">
             <tr>
-                <td>${user.name}</td>
-                <td>${user.surname}</td>
-                <td>${user.email}</td>
-                <td>${user.address}</td>
+                <td>${user.username}</td>
+                <td>${user.password}</td>
                 <td>
 
                 </td>
