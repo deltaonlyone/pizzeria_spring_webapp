@@ -35,7 +35,7 @@
         </tbody>
     </table>
     <div>
-            Загальна сума: ${cart.countTotalAmount()}
+            Загальна сума:<fmt:formatNumber type="number" maxFractionDigits="2" value="${cart.countTotalAmount()}"/>
     </div>
     <form:form method="post" action="${pageContext.request.contextPath}/orders">
 

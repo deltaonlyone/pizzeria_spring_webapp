@@ -18,26 +18,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource);
     }
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//            .authorizeRequests()
-//                .antMatchers("//**").permitAll() // Дозволяє всім доступ до статичних ресурсів
-//                .antMatchers("/user/**").hasRole("USER") // Дозволяє доступ для користувачів з роллю USER
-//                .anyRequest().permitAll()
-//                .and()
-//            .formLogin()
-//                .loginPage("/login")
-//                .permitAll()
-//                .and()
-//            .logout()
-//                .permitAll();
-//    }
-
-
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
 }
