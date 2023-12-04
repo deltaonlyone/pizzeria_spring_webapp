@@ -8,6 +8,13 @@
 </head>
 <body>
 <h1>All Pizzas</h1>
+<div>
+    <div>
+        <input type="button" value="Orders" onclick="window.location.href='${pageContext.request.contextPath}/orders'">
+
+        <input type="button" value="Users" onclick="window.location.href='${pageContext.request.contextPath}/users'">
+    </div>
+</div>
 <c:if test="${not empty allPizzas}">
     <table border="1">
         <thead>
